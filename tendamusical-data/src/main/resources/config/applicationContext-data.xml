@@ -49,7 +49,7 @@
 	<!-- :::::::::::: BEAN QUE S'ENCARREGA D'ADMINISTRAR I REGISTRAR ELS ENTITIES 
 		DE JPA I LES SEVES PROPIETATS -->
 
-	<bean id="entityManagerFactory"
+	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 
 		<property name="dataSource" ref="dataSource"></property>
@@ -60,7 +60,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.jdbc.time_zone">UTC</prop>
+				
 
 			</props>
 
@@ -72,6 +72,8 @@
 	 <bean class="org.hibernate.jpa.HibernatePersistenceProvider"></bean>
 		
 		</property>
+		
+		
 		
 	  
 		
@@ -106,13 +108,14 @@
 		D'EXECUTAR LES TRANSACCIONS A LA BASE DE DADES (DAO) -->
 
 	<jpa:repositories
-		base-package="com.lostriver.tiendamusicaldata.repositories"
-		entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
+		base-package="com.lostriver.tendamusicaldata.dao"
+		entity-manager-factory-ref="emf"></jpa:repositories>
 
 
 
 
 </beans>
+
 
 
 

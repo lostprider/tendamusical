@@ -1,0 +1,18 @@
+body .ui-panel .ui-panel-content {
+	
+	background-color: black;
+}
+
+body .ui-panelgrid .ui-panelgrid-cell{
+	
+	background-color: black;
+}
+
+.colorText {
+	color: white;
+}
+
+body .ui-panel .ui-panel-titlebar{
+	
+	background-color: rgb(0, 122, 217);
+}

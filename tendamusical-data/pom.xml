@@ -31,6 +31,10 @@
 			<groupId>com.lostriver</groupId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		
+		
+	
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -79,18 +83,7 @@
 </dependency>
 		
 		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
-<dependency>
-    <groupId>javax.persistence</groupId>
-    <artifactId>javax.persistence-api</artifactId>
-    <version>2.2</version>
-</dependency>
 
-<!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
-<dependency>
-    <groupId>javax.persistence</groupId>
-    <artifactId>persistence-api</artifactId>
-    <version>1.0.2</version>
-</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 		<dependency>
@@ -98,6 +91,14 @@
     <artifactId>hibernate-entitymanager</artifactId>
     <version>5.6.11.Final</version>
 </dependency>
+
+<dependency>
+   <groupId>commons-configuration</groupId>
+   <artifactId>commons-configuration</artifactId>
+   <version>1.9</version>
+</dependency>
+
+
 
 
 

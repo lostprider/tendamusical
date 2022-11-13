@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+
+</h:head>
+
+<h:body style="background-color: black">
+
+	<div class="ui-fluid">
+		<h:form id="formLogin">
+		
+		<p:growl id="growl" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+
+			<p:panel id="pnlLogin" header="INICI DE SESSIÓ" style="text-align: center;" >
+			
+			<p:graphicImage name="imatges/keanu.jpg" width="30%"/>
+			
+
+				<p:panelGrid id="pnlGridLogin" columns="1" layout="grid"
+					styleClass="ui-panelgrid-blank ui-fluid"
+					columnClasses="ui-g-12 ui-md-12, ui-g-12 ui-md-12">
+
+					<p:outputLabel value="Usuari: " styleClass="colorText" for="txtUsuari" style="float: left"></p:outputLabel>
+					<p:inputText id="txtUsuari" value="#{loginController.usuario}"
+						required="true" requiredMessage="L'usuari es obligatori"></p:inputText>
+
+					<p:outputLabel value="Contrasenya: " styleClass="colorText" for="txtPassword" style="float: left"></p:outputLabel>
+					<p:password id="txtPassword" value="#{loginController.password}"
+						required="true" requiredMessage="La contrasenya es obligatoria"></p:password>
+
+					<p:outputLabel></p:outputLabel>
+					<p:commandButton value="ENTRAR" action="#{loginController.entrar}"
+						 update="pnlGridLogin, growl"></p:commandButton>
+
+
+				</p:panelGrid>
+
+			</p:panel>
+
+		</h:form>
+	</div>
+</h:body>
+
+</html>
