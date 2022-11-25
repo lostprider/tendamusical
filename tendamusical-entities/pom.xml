@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
    <parent>
-   <artifactId>TendaMusical</artifactId>
+   <artifactId>tendamusical</artifactId>
     <groupId>com.lostriver</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
@@ -39,6 +39,7 @@
     <artifactId>javax.persistence-api</artifactId>
     <version>2.2</version>
 </dependency>
+
 
 
 

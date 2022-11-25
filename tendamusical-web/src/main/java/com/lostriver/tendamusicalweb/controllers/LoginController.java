@@ -3,6 +3,8 @@
  */
 package com.lostriver.tendamusicalweb.controllers;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import com.lostriver.tendamusicalentities.entities.Persona;
 import com.lostriver.tendamusicalservices.service.LoginService;
+import com.lostriver.tendamusicalweb.session.SessionBean;
 import com.lostriver.tendamusicalweb.utils.CommonUtils;
 
 /**
@@ -28,7 +31,7 @@ public class LoginController {
 	/**
 	 * Usuari capturat per la persona.
 	 */
-	
+
 	private String usuario;
 
 	/**
@@ -36,15 +39,17 @@ public class LoginController {
 	 */
 
 	private String password;
-	
+
 	/**
 	 * Propietat de la logica de negoci injectada amb JSF y Spring
 	 *
 	 */
-	
+
 	@ManagedProperty("#{loginServiceImpl}")
-	
+
 	public LoginService loginServiceImpl;
+	@ManagedProperty("#{sessionBean}")
+	private SessionBean sessionBean;
 
 	@PostConstruct
 	public void init() {
@@ -55,16 +60,26 @@ public class LoginController {
 
 	/**
 	 * Metode que permet a la persona, entrar a la seva pantalla principal
+	 * 
+	 * 
 	 */
-    
+
 	public void entrar() {
-		
+
 		Persona personaConsultada = this.loginServiceImpl.consultarUsuariLogin(this.usuario, this.password);
 
-		if (personaConsultada !=null) {
-			
-			CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_INFO, "EXITÓS!", "Benvingut a la teva pantalla principal");	
-			
+		if (personaConsultada != null) {
+
+			try {
+				this.sessionBean.setPersona(personaConsultada);
+				
+				CommonUtils.redireccionar("/pages/commons/dashboard.xhtml");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_FATAL, "ERROR!", "Format incorrecte en el cual s'ingressa a la pantalla ");
+			}
+
 		} else {
 			CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_ERROR, "ERROR!", "El usuari y/o contrasenya son erronis ");
 		}
@@ -113,6 +128,12 @@ public class LoginController {
 		this.loginServiceImpl = loginServiceImpl;
 	}
 
-	
+	public SessionBean getSessionBean() {
+		return sessionBean;
+	}
+
+	public void setSessionBean(SessionBean sessionBean) {
+		this.sessionBean = sessionBean;
+	}
 
 }
