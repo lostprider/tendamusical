@@ -10,6 +10,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.lostriver.tendamusicalentities.dto.ArtistaAlbumDTO;
 import com.lostriver.tendamusicalservices.service.HomeService;
 
@@ -20,6 +23,12 @@ import com.lostriver.tendamusicalservices.service.HomeService;
 @ManagedBean
 @ViewScoped
 public class HomeController {
+	
+	/**
+	 * Objecte que permet mostrar els missatges de LOG en la consola del servidor o en un arxiu extern.
+	 */
+	private static final Logger LOGGER = LogManager.getLogger(HomeController.class);
+	
 	/**
 	 * Texto ingresado por el cliente en el buscador.
 	 */
@@ -38,7 +47,10 @@ public class HomeController {
 	 */
 	@PostConstruct
 	public void init() {
-		System.out.println("Inicializando Home");
+		LOGGER.info("INFO");
+		LOGGER.warn("WARN");
+		LOGGER.error("ERROR");
+		LOGGER.fatal("FATAL");
 	}
 	/**
 	 * Metodo que permite obtener los albums de los artistas encontrados en la base de datos
@@ -49,7 +61,7 @@ public class HomeController {
 		
 		if (this.artistasAlbumDTO != null) {
 			this.artistasAlbumDTO.forEach( artistaAlbumDTO -> {
-				System.out.println("Artista: " + artistaAlbumDTO.getArtista().getNombre());
+				LOGGER.info("Artista: " + artistaAlbumDTO.getArtista().getNombre());
 			});
 		}
 	}
