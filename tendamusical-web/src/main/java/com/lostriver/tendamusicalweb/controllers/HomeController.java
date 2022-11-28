@@ -3,9 +3,11 @@
  */
 package com.lostriver.tendamusicalweb.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -15,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.lostriver.tendamusicalentities.dto.ArtistaAlbumDTO;
 import com.lostriver.tendamusicalservices.service.HomeService;
+import com.lostriver.tendamusicalweb.session.SessionBean;
+import com.lostriver.tendamusicalweb.utils.CommonUtils;
 
 /**
  * @author lostriver
@@ -42,6 +46,11 @@ public class HomeController {
 	 */
 	@ManagedProperty("#{homeServiceImpl}")
 	private HomeService homeServiceImpl;
+	
+	@ManagedProperty("#{sessionBean}")
+	private SessionBean sessionBean;
+	
+	
 	/**
 	 * Inicializando pantalla.
 	 */
@@ -64,6 +73,20 @@ public class HomeController {
 				LOGGER.info("Artista: " + artistaAlbumDTO.getArtista().getNombre());
 			});
 		}
+	}
+	
+	public void verDetalleAlbum(ArtistaAlbumDTO artistaAlbumDTO) {
+		
+		this.sessionBean.setArtistaAlbumDTO(artistaAlbumDTO);
+		
+		try {
+			CommonUtils.redireccionar("/pages/client/detall.xhtml");
+		} catch (IOException e) {
+			CommonUtils.mostrarMensaje(FacesMessage.SEVERITY_ERROR, "UPS", "Error de format de la pagina. contacta em suport");
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	/**
@@ -102,5 +125,12 @@ public class HomeController {
 	public void setHomeServiceImpl(HomeService homeServiceImpl) {
 		this.homeServiceImpl = homeServiceImpl;
 	}
+	public SessionBean getSessionBean() {
+		return sessionBean;
+	}
+	public void setSessionBean(SessionBean sessionBean) {
+		this.sessionBean = sessionBean;
+	}
+	
 }
 

@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.lostriver.tendamusicalentities.dto.ArtistaAlbumDTO;
 import com.lostriver.tendamusicalentities.entities.Persona;
 
 /**
@@ -25,6 +26,11 @@ public class SessionBean {
 	 */
 	private Persona persona;
 	
+	/**
+	 * objecte que conté la informació del detall del album
+	 */
+    private ArtistaAlbumDTO artistaAlbumDTO;
+	
 	@PostConstruct
 	public void init() {
 		
@@ -37,6 +43,14 @@ public class SessionBean {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	public ArtistaAlbumDTO getArtistaAlbumDTO() {
+		return artistaAlbumDTO;
+	}
+
+	public void setArtistaAlbumDTO(ArtistaAlbumDTO artistaAlbumDTO) {
+		this.artistaAlbumDTO = artistaAlbumDTO;
 	}
 	
 	
