@@ -4,6 +4,8 @@
 package com.lostriver.tendamusicalweb.controllers;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -11,9 +13,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.lostriver.tendamusicalentities.entities.CarritoAlbum;
 import com.lostriver.tendamusicalentities.entities.Persona;
 import com.lostriver.tendamusicalservices.service.LoginService;
 import com.lostriver.tendamusicalweb.session.SessionBean;
@@ -28,6 +33,15 @@ import com.lostriver.tendamusicalweb.utils.CommonUtils;
 @ViewScoped
 
 public class LoginController {
+	
+	
+	/**
+	 * Objecte que permet mostrar els missatges de LOG en la consola del servidor o en un arxiu extern.
+	 */
+	private static final Logger LOGGER = LogManager.getLogger(LoginController.class);
+	
+	
+	
 	/**
 	 * Usuari capturat per la persona.
 	 */
@@ -67,11 +81,24 @@ public class LoginController {
 	public void entrar() {
 
 		Persona personaConsultada = this.loginServiceImpl.consultarUsuariLogin(this.usuario, this.password);
-
+        
+		
 		if (personaConsultada != null) {
 
 			try {
+				
+				
+				List<CarritoAlbum> carritoAlbumsFiltrados = personaConsultada.getCarrito().getCarritosAlbum().stream().filter(ca -> ca.getEstatus().equals("PENDENT")).collect(Collectors.toList());
+				
+				
+				personaConsultada.getCarrito().setCarritosAlbum(carritoAlbumsFiltrados);
+				
+				
+				LOGGER.info("Albums del carrito filtrados....");
+				
 				this.sessionBean.setPersona(personaConsultada);
+				
+				
 				
 				CommonUtils.redireccionar("/pages/commons/dashboard.xhtml");
 			} catch (IOException e) {

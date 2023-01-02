@@ -30,6 +30,10 @@ public class SessionBean {
 	 * objecte que conté la informació del detall del album
 	 */
     private ArtistaAlbumDTO artistaAlbumDTO;
+    
+    private float totalCompra;
+    
+    
 	
 	@PostConstruct
 	public void init() {
@@ -51,6 +55,14 @@ public class SessionBean {
 
 	public void setArtistaAlbumDTO(ArtistaAlbumDTO artistaAlbumDTO) {
 		this.artistaAlbumDTO = artistaAlbumDTO;
+	}
+
+	public float getTotalCompra() {
+		return totalCompra;
+	}
+
+	public void setTotalCompra(float totalCompra) {
+		this.totalCompra = totalCompra;
 	}
 	
 	

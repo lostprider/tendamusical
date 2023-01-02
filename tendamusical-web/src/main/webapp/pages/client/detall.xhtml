@@ -54,10 +54,9 @@
                                       <f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
                                       </p:outputLabel>  
                                       
-                                      <p:commandButton url="#" icon="pi pi-shopping-cart"
-										title="Shop"></p:commandButton>
+                                      <p:commandButton url="#" icon="pi pi-shopping-cart" title="Shop" action="#{detallController.agregarAlbumCarrito(sessionBean.artistaAlbumDTO)}" update="formDetalle:btnShopping"></p:commandButton>
 										
-										<p:selectOneMenu id="cboCantidad" value="">
+										<p:selectOneMenu id="cboCantidad" value="#{detallController.cantidadAlbumSeleccionada}">
 										   <f:selectItem itemValue="1" itemLabel="1" noSelectionOption="true"></f:selectItem>
 										    <f:selectItem itemValue="2" itemLabel="2" ></f:selectItem>
 										     <f:selectItem itemValue="3" itemLabel="3" ></f:selectItem>
