@@ -17,7 +17,7 @@ public interface CarritoService {
 	CarritoAlbum guardarAlbumsCarrito(ArtistaAlbumDTO artistaAlbumDTO, Carrito carrito, int cantidadAlbumSelecccionada);
 
 	
-	float calcularTotal(Carrito carrito);
+	double calcularTotal(Carrito carrito);
 	
 	void eliminarAlbumCarrito(CarritoAlbum carritoAlbum);
 	

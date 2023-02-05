@@ -62,7 +62,7 @@
 													<h:outputText value="Precio: " style="color: white;" />
 													<h:outputText value="#{carritoAlbum.album.valor}"
 														style="color: white;">
-														<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
+														<f:convertNumber type="currency" currencyCode="EUR" currencySymbol="€"></f:convertNumber>
 													</h:outputText>
 
 													<h:outputText value="Productora: " style="color: white;" />
@@ -102,7 +102,7 @@
 												value="#{carritoAlbum.album.valor * carritoAlbum.cantidad}"
 												style="color: white ">
 
-												<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
+												<f:convertNumber type="currency" currencyCode="EUR" currencySymbol="€"></f:convertNumber>
 
 											</p:outputLabel>
 
@@ -127,7 +127,7 @@
 										value="#{carritoController.sessionBean.totalCompra}"
 										style="color: white ">
 
-										<f:convertNumber type="currency" currencySymbol="€"></f:convertNumber>
+										<f:convertNumber type="currency" currencyCode="EUR" currencySymbol="€"></f:convertNumber>
 
 									</p:outputLabel>
 
@@ -150,7 +150,8 @@
 
 									<p:commandButton value="Continuar per fer el pagament"
 										style="margin-top: 40px; width: 100%"
-										disabled="#{empty sessionBean.persona.carrito.carritosAlbum}"></p:commandButton>
+										disabled="#{empty sessionBean.persona.carrito.carritosAlbum}"
+										action="#{pasosController.cambiarPaso('/pages/client/pago.xhtml',1)}"></p:commandButton>
 
 								</p:panelGrid>
 

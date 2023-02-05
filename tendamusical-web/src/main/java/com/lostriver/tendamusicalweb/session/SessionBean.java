@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 
 import com.lostriver.tendamusicalentities.dto.ArtistaAlbumDTO;
 import com.lostriver.tendamusicalentities.entities.Persona;
+import com.paypal.http.HttpResponse;
+import com.paypal.orders.Order;
 
 /**
  * @author lostriver
@@ -33,7 +35,9 @@ public class SessionBean {
     
     private float totalCompra;
     
+    private HttpResponse<Order> order;
     
+    private int paso;
 	
 	@PostConstruct
 	public void init() {
@@ -63,6 +67,23 @@ public class SessionBean {
 
 	public void setTotalCompra(float totalCompra) {
 		this.totalCompra = totalCompra;
+	}
+
+	public void setOrder(HttpResponse<Order> response) {
+	    this.order = response;
+		
+	}
+
+	public HttpResponse<Order> getOrder() {
+		return order;
+	}
+
+	public int getPaso() {
+		return paso;
+	}
+
+	public void setPaso(int paso) {
+		this.paso = paso;
 	}
 	
 	

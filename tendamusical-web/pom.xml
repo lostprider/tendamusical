@@ -7,15 +7,12 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-
-	<artifactId>tendamusical-web</artifactId>
-
+	<artifactId>tiendamusical-web</artifactId>
 	<packaging>war</packaging>
 
 	<name>tendamusical-web Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
-
 
 	<dependencies>
 		<dependency>
@@ -25,7 +22,8 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- ::::::: INTEGRAN LA DEPENDENCIA DEL PROJECTE TENDAMUSICAL-SERVICES -->
+		<!-- :::::::: INTEGRANDO LA DEPENDENCIA DEL PROYECTO TIENDAMUSICAL-SERVICES 
+			:::::::::: -->
 
 		<dependency>
 			<artifactId>tendamusical-services</artifactId>
@@ -33,14 +31,15 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
-		
 
-			<dependency>
+		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
+		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>${jsf-version}</version>
@@ -52,15 +51,6 @@
 			<artifactId>jsf-impl</artifactId>
 			<version>${jsf-version}</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/javax.faces/jsf-api -->
-<dependency>
-    <groupId>javax.faces</groupId>
-    <artifactId>jsf-api</artifactId>
-    <version>2.1</version>
-    <scope>provided</scope>
-</dependency>
-
 
 		<!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
 		<dependency>
@@ -69,42 +59,63 @@
 			<version>${javax-annotation-version}</version>
 		</dependency>
 
+<dependency>
+    <groupId>javax.servlet.jsp.jstl</groupId>
+    <artifactId>jstl-api</artifactId>
+    <version>1.2</version>
+    <exclusions>
+        <exclusion>
+            <artifactId>servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+        </exclusion>
+        <exclusion>
+            <artifactId>jsp-api</artifactId>
+            <groupId>javax.servlet.jsp</groupId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>${primefaces-version}</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-<dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-core</artifactId>
-    <version>2.19.0</version>
-</dependency>
 
-<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
-<dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-api</artifactId>
-    <version>2.19.0</version>
-</dependency>
-	<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
-<dependency>
-    <groupId>org.primefaces.extensions</groupId>
-    <artifactId>primefaces-extensions</artifactId>
-    <version>8.0.4</version>
-</dependency>
-	
-		 
+		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>${primefaces-extensions-version}</version>
+		</dependency>
 
-		
-	
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api-version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>1.14.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>tendamusical-web</finalName>
 		<pluginManagement>
-			<!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+			<!-- lock down plugins versions to avoid using Maven 
+				defaults (may be moved to parent pom) -->
 			<plugins>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>

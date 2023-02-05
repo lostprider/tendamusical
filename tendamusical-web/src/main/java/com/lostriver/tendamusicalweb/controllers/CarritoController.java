@@ -35,6 +35,7 @@ public class CarritoController {
 	@PostConstruct
 	public void init() {
 
+		this.sessionBean.setPaso(0);
 		this.calcularTotal();
 
 	}
@@ -43,7 +44,8 @@ public class CarritoController {
 		
 		LOGGER.info("Calculant el total de les compres de " + this.sessionBean.getPersona().getNombre() );
 		
-		float total = this.carritoServiceImpl.calcularTotal(this.sessionBean.getPersona().getCarrito());
+		
+		float total = (float) this.carritoServiceImpl.calcularTotal(this.sessionBean.getPersona().getCarrito());
 		
 		this.sessionBean.setTotalCompra(total);
 		

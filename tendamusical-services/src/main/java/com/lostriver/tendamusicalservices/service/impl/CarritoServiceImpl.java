@@ -40,7 +40,7 @@ public class CarritoServiceImpl implements CarritoService {
 	}
 
 	@Override
-	public float calcularTotal(Carrito carrito) {
+	public double calcularTotal(Carrito carrito) {
 		
 		 float total = 0.0F;
 		 
@@ -65,7 +65,7 @@ public class CarritoServiceImpl implements CarritoService {
 	  
 		this.carritoAlbumDAO.save(carritoAlbum);
 		
-		return this.calcularTotal(carrito);
+		return (float) this.calcularTotal(carrito);
 	}
 
 	
